@@ -10,47 +10,50 @@ import SwiftUI
 struct ContentView: View {
     @State private var isFlipped = false
     @State var value = false
+    @State private var trigger = false
     
     var body: some View {
         ZStack {
-            
-           
-//            isFlipped ? Color.purple.ignoresSafeArea() : Color.yellow.ignoresSafeArea()
-            
-            CardView(
-                text: "Second",
-                cardColors: [.darkPurple, .myPurple, .lightPurple],
-                strokeColors: [.lightTwoPurple, .lightPurple, .darkPurple, .lightPurple, .lightTwoPurple, .lightPurple])
+            Color.black.ignoresSafeArea()
+            ZStack {
+                
+                CardView(
+                    text: "Module four is finished! \n \nSwiftUI",
+                    cardColors: [.red, .purple, .blue],
+                    strokeColors: [.red, .purple, .blue],
+                    blur: 15.0,
+                    stroke: 0.5,
+                    trigger: trigger)
                 .rotation3DEffect(
                     .degrees(isFlipped ? -360 : 360),
-                                          axis: (x: 0.0, y: 1.0, z: 0.0)
+                    axis: (x: 0.0, y: 1.0, z: 0.0)
                 )
                 .scaleEffect(isFlipped ? 1.3 : 0)
                 .animation(
                     isFlipped ? .linear.delay(0.6).speed(0.5)
-                              : .linear.speed(0.5),
+                    : .linear.speed(0.5),
                     value: isFlipped)
                 
-            
-            
-            CardView(
-                text: "First",
-                cardColors: [.red, .yellow],
-                strokeColors: [.white, .gray, .white, .gray])
+                StartCardView(
+                    text: "Click to open the award!",
+                    cardColor: .black,
+                    strokeColors: [.red, .purple, .blue]
+                )
                 .rotation3DEffect(
                     .degrees(isFlipped ? -360 : 360),
-                                          axis: (x: 0.0, y: 1.0, z: 0.0)
+                    axis: (x: 0.0, y: 1.0, z: 0.0)
                 )
                 .scaleEffect(isFlipped ? 0 : 1)
                 .animation(
-                    isFlipped ? .linear.speed(0.5) 
+                    isFlipped ? .linear.speed(0.5)
                               : .linear.delay(0.6).speed(0.5),
                     value: isFlipped)
-        }
-        .onTapGesture {
-            withAnimation(.easeInOut) {
-                isFlipped.toggle()
-                
+            }
+            .onTapGesture {
+                withAnimation(.easeInOut) {
+                    isFlipped.toggle()
+                    
+                }
             }
         }
     }
@@ -58,5 +61,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        
+    
 }

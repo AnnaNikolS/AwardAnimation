@@ -1,19 +1,16 @@
 //
-//  CardView.swift
+//  StartCardView.swift
 //  AwardAnimation
 //
-//  Created by Анна on 26.05.2024.
+//  Created by Анна on 27.05.2024.
 //
 
 import SwiftUI
 
-struct CardView: View {
+struct StartCardView: View {
     var text: String
-    var cardColors: [Color]
+    var cardColor: Color
     var strokeColors: [Color]
-    var blur: Double
-    var stroke: Double
-    var trigger: Bool
     
     var body: some View {
         ZStack {
@@ -26,20 +23,13 @@ struct CardView: View {
                         endPoint: UnitPoint(x: 1, y: 0))
                 )
                 .frame(width: 200, height: 300)
-                .blur(radius: blur)
             
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(
-                        LinearGradient(
-                            colors: cardColors,
-                            startPoint: UnitPoint(x: 0, y: 1),
-                            endPoint: UnitPoint(x: 1, y: 0))
-                    )
+                .foregroundStyle(.black)
                     .frame(width: 190, height: 290)
-                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(.white, lineWidth: stroke).blur(radius: 0.5))
            
                 
-            CustomTextView(text: text, trigger: trigger)
+            Text(text)
                 .frame(width: 170)
                 .foregroundStyle(.white)
                 .font(.title.bold())
@@ -52,5 +42,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(text: "1", cardColors: [.red, .purple, .blue], strokeColors: [.red, .purple, .blue], blur: 3.0, stroke: 0.5, trigger: false)
+    StartCardView(text: "1", cardColor: .red, strokeColors: [.red, .purple, .blue])
 }
