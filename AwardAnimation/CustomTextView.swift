@@ -11,7 +11,7 @@ struct CustomTextView: View {
     var text: String
     var trigger: Bool
     var transition: ContentTransition = .interpolate
-    var duration: CGFloat = 6.0
+    var duration: CGFloat = 5.0
     var speed: CGFloat = 0.1
     
     @State private var animatedText = ""

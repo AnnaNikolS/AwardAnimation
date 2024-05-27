@@ -9,14 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isFlipped = false
-    @State var value = false
+    @State private var value = false
     @State private var trigger = false
     
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
             ZStack {
-                
                 CardView(
                     text: "Module four is finished! \n \nSwiftUI",
                     cardColors: [.red, .purple, .blue],
@@ -33,7 +32,7 @@ struct ContentView: View {
                     isFlipped ? .linear.delay(0.6).speed(0.5)
                     : .linear.speed(0.5),
                     value: isFlipped)
-                
+       
                 StartCardView(
                     text: "Click to open the award!",
                     cardColor: .black,
@@ -52,7 +51,7 @@ struct ContentView: View {
             .onTapGesture {
                 withAnimation(.easeInOut) {
                     isFlipped.toggle()
-                    
+                    trigger.toggle()
                 }
             }
         }

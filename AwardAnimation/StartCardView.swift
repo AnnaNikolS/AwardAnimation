@@ -14,7 +14,6 @@ struct StartCardView: View {
     
     var body: some View {
         ZStack {
-                
             RoundedRectangle(cornerRadius: 22)
                 .fill(
                     LinearGradient(
@@ -27,17 +26,15 @@ struct StartCardView: View {
                 RoundedRectangle(cornerRadius: 20)
                 .foregroundStyle(.black)
                     .frame(width: 190, height: 290)
-           
+            CurveView()
+                .frame(width: 190, height: 290)
                 
             Text(text)
                 .frame(width: 170)
                 .foregroundStyle(.white)
                 .font(.title.bold())
                 .lineLimit(6)
-                
-            
         }
-        
     }
 }
 
